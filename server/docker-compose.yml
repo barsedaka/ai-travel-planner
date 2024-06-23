@@ -9,3 +9,23 @@ services:
     restart: always
     environment:
       POSTGRES_PASSWORD: changemeinprod!
+
+  backend:
+    build: .
+    ports:
+      - "8080:8080"
+    depends_on:
+      - db
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://db:5432/postgres
+      SPRING_DATASOURCE_USERNAME: postgres
+      SPRING_DATASOURCE_PASSWORD: changemeinprod!
+
+  frontend:
+    image: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ../client/build:/usr/share/nginx/html
+    depends_on:
+      - backend

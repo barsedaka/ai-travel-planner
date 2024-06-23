@@ -4,8 +4,8 @@ import com.bar.travelplanner.dto.JwtAuthResponse;
 import com.bar.travelplanner.dto.LoginDTO;
 import com.bar.travelplanner.dto.RegisterDTO;
 import com.bar.travelplanner.service.AuthService;
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
-import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -19,7 +19,7 @@ public class AuthController {
     private AuthService authService;
 
     @PostMapping("/register")
-    public ResponseEntity<String> register(@RequestBody RegisterDTO registerDTO) throws Exception {
+    public ResponseEntity<String> register(@Valid @RequestBody RegisterDTO registerDTO) throws Exception {
         String response = authService.register(registerDTO);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }

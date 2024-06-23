@@ -59,4 +59,20 @@ public class JwtTokenProvider {
                 .parse(token);
         return true;
     }
+
+//    public boolean validateToken(String token) {
+//        try {
+//            Jwts.parserBuilder()
+//                    .setSigningKey(key())
+//                    .build()
+//                    .parseClaimsJws(token);
+//            return true;
+//        } catch (ExpiredJwtException ex) {
+//            // Ignore the ExpiredJwtException and return true
+//            return false;
+//        } catch (SignatureException | MalformedJwtException | UnsupportedJwtException | IllegalArgumentException ex) {
+//            // Handle other exceptions and return false
+//            return false;
+//        }
+//    }
 }

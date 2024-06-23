@@ -1,18 +1,24 @@
 package com.bar.travelplanner.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import com.bar.travelplanner.utils.constants.DTOConstants;
+import jakarta.validation.constraints.*;
+import lombok.*;
 
-@Getter
-@Setter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class RegisterDTO {
 
     private String name;
+
+    @NotBlank(message = "Username cannot be empty")
+    @Pattern(regexp = DTOConstants.USERNAME_REG_EXP, message = "Username should be 2-20 characters long and can consist of English letters, digits, underscores, or hyphens")
     private String username;
+
+    @Email
     private String email;
+
+    @NotBlank(message = "Password cannot be empty")
+    @Size(min = 4, max = 20, message = "Password length should be between 4-20 characters")
     private String password;
 }
