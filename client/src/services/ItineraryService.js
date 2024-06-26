@@ -1,7 +1,7 @@
 import axios from "axios";
 import { getToken } from "./AuthService";
 
-const BASE_REST_API_URL = 'http://13.51.178.226:8080/api/itineraries';
+const BASE_REST_API_URL = 'http://13.51.178.226/api/itineraries';
 
 // Add a request interceptor
 axios.interceptors.request.use(function (config) {
